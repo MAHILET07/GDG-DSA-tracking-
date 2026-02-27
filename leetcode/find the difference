@@ -1,0 +1,7 @@
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        # Subtracting counts of s from t leaves only the extra char
+        diff = Counter(t) - Counter(s)
+        
+        # diff will look like {'e': 1}. list(diff) gives ['e']
+        return list(diff.elements())[0]
