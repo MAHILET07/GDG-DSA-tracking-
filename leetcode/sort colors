@@ -1,0 +1,24 @@
+class Solution:
+    def sortColors(self, nums: list[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        # Initialize pointers
+        low = 0          # Boundary for 0s
+        mid = 0          # Current element explorer
+        high = len(nums) - 1  # Boundary for 2s
+
+        while mid <= high:
+            if nums[mid] == 0:
+                # Swap 0 to the front (low boundary)
+                nums[low], nums[mid] = nums[mid], nums[low]
+                low += 1
+                mid += 1
+            elif nums[mid] == 1:
+                # 1 is already in the 'middle' section, just move on
+                mid += 1
+            else: # nums[mid] == 2
+                # Swap 2 to the back (high boundary)
+                nums[mid], nums[high] = nums[high], nums[mid]
+                # High moves back, but mid stays to check the new swapped value
+                high -= 1        
