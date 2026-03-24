@@ -1,0 +1,25 @@
+import math
+
+class Solution:
+    def minEatingSpeed(self, piles: list[int], h: int) -> int:
+        def canFinish(k):
+            hours_spent = 0
+            for pile in piles:
+                # Calculate ceil(pile / k)
+                hours_spent += (pile + k - 1) // k
+            return hours_spent <= h
+
+        left = 1
+        right = max(piles)
+        
+        while left < right:
+            mid = (left + right) // 2
+            if canFinish(mid):
+                # Speed mid works, try to find a smaller speed
+                right = mid
+            else:
+                # Speed mid is too slow, increase speed
+                left = mid + 1
+                
+        return left
+```
