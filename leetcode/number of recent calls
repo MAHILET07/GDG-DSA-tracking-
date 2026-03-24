@@ -1,0 +1,16 @@
+class RecentCounter:
+    def __init__(self):
+        # Initialize an empty deque (double-ended queue)
+        self.requests = collections.deque()
+
+    def ping(self, t: int) -> int:
+        # 1. Add the current request time
+        self.requests.append(t)
+        
+        # 2. Remove requests that are older than t - 3000
+        while self.requests[0] < t - 3000:
+            self.requests.popleft()
+            
+        # 3. The number of elements left are within the [t-3000, t] range
+        return len(self.requests)
+```
