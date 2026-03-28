@@ -1,0 +1,10 @@
+class Solution:
+    def getRow(self, rowIndex: int) -> List[int]:
+        row = [1]
+        for i in range(rowIndex):
+            # Calculate the next element in the row using the previous one
+            # next = current * (n - i) / (i + 1)
+            next_val = row[-1] * (rowIndex - i) // (i + 1)
+            row.append(next_val)
+        return row
+        
