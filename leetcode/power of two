@@ -1,0 +1,11 @@
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        if n < 1:
+            return False
+        
+        # Keep dividing as long as the number is even
+        while n % 2 == 0:
+            n //= 2
+            
+        # After the loop, if it was a power of two, n must be 1
+        return n == 1
