@@ -1,0 +1,20 @@
+class Solution:
+    def subarraysDivByK(self, nums: list[int], k: int) -> int:
+       
+        mod_groups = [0] * k
+        mod_groups[0] = 1  
+        
+        prefix_mod = 0
+        result = 0
+        
+        for num in nums:
+            
+            prefix_mod = (prefix_mod + num) % k
+            
+           
+            result += mod_groups[prefix_mod]
+       
+            mod_groups[prefix_mod] += 1
+            
+        return result
+        
